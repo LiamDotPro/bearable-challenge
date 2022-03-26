@@ -13,7 +13,7 @@ interface Props {
 
 const Visual: React.FC<Props> = ({title, length, moodCounts}) => {
     return (
-        <Container>
+        <Container height={60}>
             <Title fontSize={13} color="darkBlue" lineHeight="16px" fontWeight={700}>{title}</Title>
             <Bar feelingName={title} length={length} moodCounts={moodCounts} />
         </Container>

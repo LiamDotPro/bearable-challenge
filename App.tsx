@@ -13,7 +13,7 @@ export default function App() {
         <ThemeProvider theme={theme}>
             <Provider store={store}>
                 <SafeAreaView>
-                    <Container flex p={20}>
+                    <Container height="100%" p={20}>
                         <DataInput/>
                         <Visualisation/>
                     </Container>

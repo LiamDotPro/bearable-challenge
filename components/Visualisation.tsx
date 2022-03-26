@@ -14,7 +14,7 @@ const Visualisation: React.FC = () => {
         return (1 - (input / formattedEntries.length) / 2);
     }
 
-    return <Container mt={20}>
+    return <Container mt={20} mr={40}>
         {formattedEntries.map((item, i) =>
             <Visual key={`visual-parent-${item[0]}`} title={item[0]} moodCounts={item[1]} length={getLengthAsPercentage(i)}/>
         )}

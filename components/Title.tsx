@@ -1,8 +1,8 @@
 import styled from 'styled-components/native'
-import Paragraph from "./Paragraph";
+import Text from "./Text";
 
 
-const Title = styled(Paragraph)`
+const Title = styled(Text)`
 `
 
 export default Title

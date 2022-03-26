@@ -1,8 +1,7 @@
 import styled from 'styled-components/native'
-import {Text} from 'react-native'
 import {color, space, typography, layout, flexbox, border} from 'styled-system'
 
-const Paragraph = styled(Text)`
+export default Text = styled.Text`
   ${color}
   ${space}
   ${typography}
@@ -10,5 +9,3 @@ const Paragraph = styled(Text)`
   ${flexbox}
   ${border}
 `
-
-export default Paragraph

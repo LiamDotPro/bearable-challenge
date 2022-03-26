@@ -1,6 +1,8 @@
 import React from "react";
 import Container from "./Container";
-import Paragraph from "./Paragraph";
+import Text from "./Text";
+import styled from 'styled-components/native'
+import {View} from "react-native";
 
 interface Props {
     length: number;
@@ -9,6 +11,11 @@ interface Props {
 }
 
 const colors = ['pastel.red', 'pastel.orange', 'pastel.yellow', 'pastel.green', 'pastel.teal']
+
+const StyledBar = styled(View)`
+  height: 16px;
+  background: red;
+`
 
 const Bar: React.FC<Props> = ({length, moodCounts, feelingName}) => {
 
@@ -27,42 +34,41 @@ const Bar: React.FC<Props> = ({length, moodCounts, feelingName}) => {
     const getFirstIndexAboveZero = getBarPercentagesBasedOnEntries().findIndex(percentage => percentage > 0)
 
     return (
-        <Container mt="13px" mb="13px" borderRadius={4} width={length} height="16px" flex>
+        <Container flex flexDirection="row" width={length} mt={13}>
             {getBarPercentagesBasedOnEntries().map((percentage, index) => {
 
                 if (percentage === 0) {
-                    return null
+                    return <></>
                 }
 
                 return <Container
                     key={`bar-visual-${feelingName}-${index}`}
                     borderTopLeftRadius={index === getFirstIndexAboveZero ? 5 : 0}
                     borderBottomLeftRadius={index === getFirstIndexAboveZero ? 5 : 0}
-                    height="100%"
                     width={percentage}
+                    height={16}
                     bg={colors[index]}/>
             })}
+
             <Container position='relative'
-                       right="14px"
-                       top="-8px"
+                       right={10}
+                       top={-8}
                        border="1.5px solid"
                        borderColor='darkBlue'
-                       width="48px"
-                       height="30px"
+                       width={48}
+                       height={30}
                        borderRadius={13}
                        bg="white">
-                <Paragraph flex
-                           height="100%"
-                           fontSize="15px"
-                           lineHeight="18px"
-                           fontWeight={600}
-                           borderRadius={13}
-                           alignContent='center'
-                           justifyContent='center'
-                           alignItems='center'
+                <Text
+                    mt={1}
+                    fontSize={15}
+                    lineHeight='18px'
+                    fontWeight={600}
+                    borderRadius={13}
+                    textAlign='center'
                 >
                     {totalEntries}
-                </Paragraph>
+                </Text>
             </Container>
         </Container>
     )
