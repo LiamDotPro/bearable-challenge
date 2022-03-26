@@ -1,18 +1,18 @@
 // convert number to string representation
 export const convertIntegerNumberToString = (number: number): string => {
     if (number === 1) {
-        return 'one';
+        return 'one'
     }
     if (number === 2) {
-        return 'two';
+        return 'two'
     }
     if (number === 3) {
-        return 'three';
+        return 'three'
     }
     if (number === 4) {
-        return 'four';
+        return 'four'
     }
     if (number === 5) {
-        return 'five';
+        return 'five'
     }
-};
+}

@@ -1,8 +1,8 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {createSelector} from '@reduxjs/toolkit'
-import {Count, Entry} from "../interfaces/Category";
-import {RootState} from "./store";
-import {convertIntegerNumberToString} from "../shared/convertIntegerNumberToString";
+import {Count, Entry} from "../interfaces/Entry"
+import {RootState} from "./store"
+import {convertIntegerNumberToString} from "../shared/convertIntegerNumberToString"
 
 // Define a type for the slice state
 interface EntriesState {
@@ -19,7 +19,7 @@ export const entriesSlice = createSlice({
     initialState,
     reducers: {
         addNewEntry: (state, action: PayloadAction<{ entry: Entry }>) => {
-            state.entries = [...state.entries, action.payload.entry];
+            state.entries = [...state.entries, action.payload.entry]
         }
     }
 })
@@ -37,10 +37,10 @@ export const selectFormattedEntries = createSelector(
 
         // Here we create a map instead of an array as
         // we will want to reference feelings by key instead of index
-        let result = new Map<string, Count>();
+        let result = new Map<string, Count>()
 
         for (let i = 0; i < entries.length; i++) {
-            const entry = entries[i];
+            const entry = entries[i]
 
             for (let x = 0; x < entry.feelings.length; x++) {
                 if (!result.has(entry.feelings[x])) {
@@ -53,12 +53,12 @@ export const selectFormattedEntries = createSelector(
                     })
                 }
 
-                const selectedFeelings: Count = result.get(entry.feelings[x]);
+                const selectedFeelings: Count = result.get(entry.feelings[x])
 
                 // Here is a nice quirk of the assessment logic as 1|2|3|4|5 can always be used
                 // as a string key reference to the feelings map
-                selectedFeelings[convertIntegerNumberToString(entry.moodAssessment)]++;
-                result.set(entry.feelings[x], selectedFeelings);
+                selectedFeelings[convertIntegerNumberToString(entry.moodAssessment)]++
+                result.set(entry.feelings[x], selectedFeelings)
             }
         }
 
@@ -72,17 +72,17 @@ export const selectFormattedEntries = createSelector(
         return Array.from([...result].sort((a, b) => {
 
             // reduce object keys values to a single number
-            const aCount: number = Object.values(a[1]).reduce((acc, curr) => acc + curr, 0);
-            const bCount: number = Object.values(b[1]).reduce((acc, curr) => acc + curr, 0);
+            const aCount: number = Object.values(a[1]).reduce((acc, curr) => acc + curr, 0)
+            const bCount: number = Object.values(b[1]).reduce((acc, curr) => acc + curr, 0)
 
             if (aCount > bCount) {
-                return -1;
+                return -1
             } else if (aCount < bCount) {
-                return 1;
+                return 1
             } else {
-                return 0;
+                return 0
             }
-        }));
+        }))
     })
 
 export default entriesSlice.reducer

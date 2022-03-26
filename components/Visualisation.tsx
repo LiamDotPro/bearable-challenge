@@ -1,8 +1,8 @@
-import React from "react";
-import Container from "./Container";
-import {useAppSelector} from "../store/hooks";
-import {selectFormattedEntries} from "../store/entriesSlice";
-import Visual from "./Visual";
+import React from "react"
+import Container from "./Container"
+import {useAppSelector} from "../store/hooks"
+import {selectFormattedEntries} from "../store/entriesSlice"
+import Visual from "./Visual"
 
 const Visualisation: React.FC = () => {
 
@@ -11,7 +11,7 @@ const Visualisation: React.FC = () => {
 
     const getLengthAsPercentage = (input: number) => {
         // We use two here as we want a less dramatic shortening of the bar
-        return (1 - (input / formattedEntries.length) / 2);
+        return (1 - (input / formattedEntries.length) / 2)
     }
 
     return <Container mt={20} mr={40}>
@@ -21,4 +21,4 @@ const Visualisation: React.FC = () => {
     </Container>
 }
 
-export default Visualisation;
+export default Visualisation

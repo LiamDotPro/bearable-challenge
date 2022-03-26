@@ -1,21 +1,14 @@
-import React from "react";
-import Container from "./Container";
-import Text from "./Text";
-import styled from 'styled-components/native'
-import {View} from "react-native";
+import React from "react"
+import Container from "./Container"
+import Text from "./Text"
 
 interface Props {
-    length: number;
-    moodCounts: { one: number, two: number, three: number, four: number, five: number };
-    feelingName: string;
+    length: number
+    moodCounts: { one: number, two: number, three: number, four: number, five: number }
+    feelingName: string
 }
 
 const colors = ['pastel.red', 'pastel.orange', 'pastel.yellow', 'pastel.green', 'pastel.teal']
-
-const StyledBar = styled(View)`
-  height: 16px;
-  background: red;
-`
 
 const Bar: React.FC<Props> = ({length, moodCounts, feelingName}) => {
 
@@ -73,4 +66,4 @@ const Bar: React.FC<Props> = ({length, moodCounts, feelingName}) => {
         </Container>
     )
 }
-export default Bar;
+export default Bar

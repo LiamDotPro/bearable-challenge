@@ -1,13 +1,13 @@
-import React, {useState} from "react";
-import Card from "./Card";
-import OutlineButton from "./OutlineButton";
-import Text from "./Text";
-import Container from "./Container";
-import Box from "./Box";
-import {useAppDispatch} from "../store/hooks";
-import {addNewEntry} from "../store/entriesSlice";
-import {uuid} from "../shared/uuid";
-import {TouchableWithoutFeedback, View} from "react-native";
+import React, {useState} from "react"
+import Card from "./Card"
+import OutlineButton from "./OutlineButton"
+import Text from "./Text"
+import Container from "./Container"
+import Box from "./Box"
+import {useAppDispatch} from "../store/hooks"
+import {addNewEntry} from "../store/entriesSlice"
+import {uuid} from "../shared/uuid"
+import {TouchableWithoutFeedback} from "react-native"
 
 const moodBoxes: {
     score: 1 | 2 | 3 | 4 | 5,
@@ -27,18 +27,18 @@ const DataInput: React.FC = () => {
 
     const dispatch = useAppDispatch()
 
-    const [score, setScore] = useState<1 | 2 | 3 | 4 | 5>(null);
-    const [selectedFeelings, setSelectedFeelings] = useState([]);
+    const [score, setScore] = useState<1 | 2 | 3 | 4 | 5>(null)
+    const [selectedFeelings, setSelectedFeelings] = useState([])
 
     const updateMoodAssessment = (score: 1 | 2 | 3 | 4 | 5) => setScore(score)
 
     const addNewFeeling = (feeling: string) => {
-        if (selectedFeelings.includes(feeling)) return;
+        if (selectedFeelings.includes(feeling)) return
         setSelectedFeelings([...selectedFeelings, feeling])
     }
 
     const submitEntry = () => {
-        if (!score || !selectedFeelings.length) return;
+        if (!score || !selectedFeelings.length) return
 
         dispatch(addNewEntry({
             entry: {
